@@ -43,17 +43,17 @@ public struct SwiftyREX {
 
 extension SwiftyREX {
     public struct Capture {
-        let value: String
-        let range: Range<String.Index>
+        public let value: String
+        public let range: Range<String.Index>
     }
 }
 
 extension SwiftyREX {
     public struct Match {
-        let value: String
-        let range: Range<String.Index>
+        public let value: String
+        public let range: Range<String.Index>
 
-        let captures: [Capture]
+        public let captures: [Capture]
     }
 }
 
