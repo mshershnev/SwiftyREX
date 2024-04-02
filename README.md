@@ -88,7 +88,9 @@ switch string {
 Add a dependency to your `Package.swift`:
 
 ```swift
-.Package(url: "https://github.com/mshershnev/SwiftyREX")
+dependencies: [
+    .package(url: "https://github.com/mshershnev/SwiftyREX")
+]
 ```
 
 ## License
