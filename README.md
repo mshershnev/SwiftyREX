@@ -1,4 +1,4 @@
-# SwiftyREX
+# SwiftyREX 🦖
 
 NSRegularExpression wrapper.
 
