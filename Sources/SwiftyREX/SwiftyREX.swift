@@ -1,13 +1,13 @@
 import Foundation
 
 public struct SwiftyREX {
-    private let regex: NSRegularExpression
+    internal let regex: NSRegularExpression
 
     public init(_ pattern: String) throws {
         regex = try NSRegularExpression(pattern: pattern)
     }
     
-    func matches(in string: String) -> [Match] {
+    public func matches(in string: String) -> [Match] {
         regex
             .matches(
                 in: string,
@@ -58,7 +58,7 @@ extension SwiftyREX {
 }
 
 extension SwiftyREX {
-    static func ~=(regex: Self, string: String) -> Bool {
+    public static func ~=(regex: Self, string: String) -> Bool {
         !regex.matches(in: string).isEmpty
     }
 }
