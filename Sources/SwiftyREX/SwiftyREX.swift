@@ -42,14 +42,14 @@ public struct SwiftyREX {
 }
 
 extension SwiftyREX {
-    struct Capture {
+    public struct Capture {
         let value: String
         let range: Range<String.Index>
     }
 }
 
 extension SwiftyREX {
-    struct Match {
+    public struct Match {
         let value: String
         let range: Range<String.Index>
 
