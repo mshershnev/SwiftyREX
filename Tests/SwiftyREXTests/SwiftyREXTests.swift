@@ -5,7 +5,7 @@ final class SwiftyREXTests: XCTestCase {
     func replace() {
         var string = "Check out the new iPhone 15"
 
-        guard let regex = try? SwiftyREX(#"(\d+)"#) else {
+        guard let regex = try? SwiftyREX(#"\d+"#) else {
             return XCTFail("SwiftyREX could not be created")
         }
 

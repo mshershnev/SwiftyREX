@@ -10,7 +10,7 @@ Replace:
 var string = "Check out the new iPhone 15"
 
 guard
-    let regex = try? SwiftyREX(#"(\d+)"#),
+    let regex = try? SwiftyREX(#"\d+"#),
     let match = regex.matches(in: string).first
 else {
     return
