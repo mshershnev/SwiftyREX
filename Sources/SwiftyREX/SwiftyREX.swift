@@ -3,7 +3,7 @@ import Foundation
 public struct SwiftyREX {
     private let regex: NSRegularExpression
 
-    init(_ pattern: String) throws {
+    public init(_ pattern: String) throws {
         regex = try NSRegularExpression(pattern: pattern)
     }
     

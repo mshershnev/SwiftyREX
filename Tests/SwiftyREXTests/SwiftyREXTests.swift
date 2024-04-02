@@ -2,7 +2,7 @@ import XCTest
 @testable import SwiftyREX
 
 final class SwiftyREXTests: XCTestCase {
-    func replace() {
+    func replace() throws {
         var string = "Check out the new iPhone 15"
 
         guard let regex = try? SwiftyREX(#"\d+"#) else {
@@ -18,7 +18,7 @@ final class SwiftyREXTests: XCTestCase {
         XCTAssertEqual(string, "Check out the new iPhone 16")
     }
     
-    func parsing() {
+    func parsing() throws {
         let string = """
         [
             {username: "root", password: "fh6Cf&Tt"},
@@ -56,7 +56,7 @@ final class SwiftyREXTests: XCTestCase {
         XCTAssertEqual(adminCredential.password, "4SB&FNYc")
     }
 
-    func email() {
+    func email() throws {
         let string = "m1k3@github.com"
 
         guard
