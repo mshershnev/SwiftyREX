@@ -1,6 +1,64 @@
-public struct SwiftyREX {
-    public private(set) var text = "Hello, World!"
+import Foundation
 
-    public init() {
+public struct SwiftyREX {
+    private let regex: NSRegularExpression
+
+    init(_ pattern: String) throws {
+        regex = try NSRegularExpression(pattern: pattern)
+    }
+    
+    func matches(in string: String) -> [Match] {
+        regex
+            .matches(
+                in: string,
+                range: .init(string.startIndex..., in: string)
+            )
+            .map { match in
+                (0..<match.numberOfRanges).map {
+                    match.range(at: $0)
+                }
+            }
+            .compactMap { ranges -> [Capture] in
+                ranges.compactMap {
+                    guard let range = Range($0, in: string) else {
+                        return nil
+                    }
+                    
+                    return .init(value: String(string[range]), range: range)
+                }
+            }
+            .compactMap { captures in
+                guard let match = captures.first else {
+                    return nil
+                }
+
+                return .init(
+                    value: match.value,
+                    range: match.range,
+                    captures: Array(captures[1 ..< captures.count])
+                )
+            }
+    }
+}
+
+extension SwiftyREX {
+    struct Capture {
+        let value: String
+        let range: Range<String.Index>
+    }
+}
+
+extension SwiftyREX {
+    struct Match {
+        let value: String
+        let range: Range<String.Index>
+
+        let captures: [Capture]
+    }
+}
+
+extension SwiftyREX {
+    static func ~=(regex: Self, string: String) -> Bool {
+        !regex.matches(in: string).isEmpty
     }
 }
