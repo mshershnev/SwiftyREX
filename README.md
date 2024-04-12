@@ -65,13 +65,13 @@ Switch statement:
 let string = "m1k3@github.com"
 
 guard
-    let email = try? SwiftyREX(#"^\w+@\w+.\w+$"#)
+    let isEmail = try? SwiftyREX(#"^\w+@\w+.\w+$"#)
 else {
     return
 }
 
 switch string {
-    case email: 
+    case isEmail: 
         print("Looks like an email")
     default: 
         print("Looks like NOT an email")
